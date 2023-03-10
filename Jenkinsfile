@@ -20,6 +20,6 @@ node('built-in')
     stage('ContinuousDelivery')
     {
         input message: 'Need approval from the Delivery Manager', submitter: 'surya'
-        deploy adapters: [tomcat9(credentialsId: '035d0a68-54f2-446c-82af-c776ebc487b0', path: '', url: 'http://172.31.22.177:8080')], contextPath: 'myprodapp', war: '**/*.war'
+        sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline1/webapp/target/webapp.war ubuntu@172.31.22.177:/var/lib/tomcat9/webapps/prodapp1.war'
     }
 }
